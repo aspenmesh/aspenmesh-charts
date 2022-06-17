@@ -6,6 +6,7 @@ clusterRole:
 clusterRoleBinding:
   name: otel-role-binding
 otelcollector:
+  tenant-name: "ASPEN-SAAS-DEMO"
   replicaCount: 1
   image:
     repository: otel/opentelemetry-collector-contrib
