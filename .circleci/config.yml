@@ -1,0 +1,32 @@
+version: 2.1
+
+jobs:
+  package:
+    docker:
+      - image: ghcr.io/banzaicloud/helm:0.0.8
+    steps:
+      - checkout
+      - run:
+          name: Helm package
+          command: |
+            TAG=0.1.0
+            helm package aspenmesh-demo/ --version $TAG            
+      - run:
+          name: Helm index
+          command: helm repo index --url https://aspenmesh.github.io/aspenmesh-demo-site-charts/ --merge index.yaml .
+      - add_ssh_keys:
+          fingerprints:
+            - "3f:36:f6:56:aa:d0:73:4a:19:43:d8:29:f2:13:8a:a5"
+      - run:
+          name: commit
+          command: |
+            git config user.email "bjimerson@gmail.com"
+            git config user.name "CircleCI Job"
+            git add .
+            git commit --allow-empty -am "Packaged helm chart version 0.1.0 [skip ci]"
+            git push origin main
+
+workflows:
+  helm-chart-release:
+    jobs:
+      - package
