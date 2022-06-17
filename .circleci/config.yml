@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  package:
+  release:
     docker:
       - image: ghcr.io/banzaicloud/helm:0.0.8
     steps:
@@ -18,7 +18,7 @@ jobs:
           fingerprints:
             - "3c:79:68:98:84:35:59:e0:5a:f9:2b:be:c1:b1:7f:da"
       - run:
-          name: commit
+          name: Commit changes
           command: |
             git config user.email "bjimerson@gmail.com"
             git config user.name "CircleCI Job"

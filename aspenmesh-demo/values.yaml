@@ -24,5 +24,7 @@ shippingservice:
   enabled: true
 otel:
   enabled: true
+  otelcollector:
+    tenantName: "ASPEN_SAAS_DEMO"
 loadgenerator:
   enabled: true
