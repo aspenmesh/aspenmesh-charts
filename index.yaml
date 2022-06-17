@@ -1,0 +1,57 @@
+apiVersion: v1
+entries:
+  aspenmesh-demo:
+  - apiVersion: v2
+    created: "2022-06-17T18:11:28.937457785Z"
+    dependencies:
+    - condition: adservice.enabled
+      name: adservice
+      repository: ""
+    - condition: boutiquedb.enabled
+      name: boutiquedb
+      repository: ""
+    - condition: cartservice.enabled
+      name: cartservice
+      repository: ""
+    - condition: checkoutservice.enabled
+      name: checkoutservice
+      repository: ""
+    - condition: currencyservice.enabled
+      name: currencyservice
+      repository: ""
+    - condition: emailservice.enabled
+      name: emailservice
+      repository: ""
+    - condition: frontend.enabled
+      name: frontend
+      repository: ""
+    - condition: paymentservice.enabled
+      name: paymentservice
+      repository: ""
+    - condition: productcatalogservice.enabled
+      name: productcatalogservice
+      repository: ""
+    - condition: recommendationservice.enabled
+      name: recommendationservice
+      repository: ""
+    - condition: redis.enabled
+      name: redis
+      repository: ""
+    - condition: shippingservice.enabled
+      name: shippingservice
+      repository: ""
+    - condition: otel.enabled
+      name: otel
+      repository: ""
+    - condition: loadgenerator.enabled
+      name: loadgenerator
+      repository: ""
+    description: Aspen Mesh Demo Site
+    digest: 6c9f3193342566506cb6b8fa47f34b147fad914376b673d290d33c614e672956
+    icon: https://brianjimerson.github.io/aspenmesh-demo-site-charts/assets/aspenmesh.png
+    name: aspenmesh-demo
+    type: application
+    urls:
+    - https://aspenmesh.github.io/aspenmesh-demo-site-charts/aspenmesh-demo-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-06-17T18:11:28.930067499Z"
