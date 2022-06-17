@@ -12,6 +12,8 @@ emailservice:
   enabled: true
 frontend:
   enabled: true
+  hostnames:
+  - "boutique.amdev.pintobean.xyz"
 paymentservice:
   enabled: true
 productcatalogservice:
