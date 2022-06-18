@@ -12,8 +12,7 @@ emailservice:
   enabled: true
 frontend:
   enabled: true
-  hostnames:
-  - "boutique.amdev.pintobean.xyz"
+  hostname: "demo.test.com"
 paymentservice:
   enabled: true
 productcatalogservice:
@@ -27,6 +26,6 @@ shippingservice:
 otel:
   enabled: true
   otelcollector:
-    tenantName: "ASPEN_SAAS_DEMO"
+    tenantname: "TEST_TENANT"
 loadgenerator:
   enabled: true
