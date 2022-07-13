@@ -16,7 +16,8 @@ data:
         metrics_path: /federate
         params:
             match[]:
-            - '{job=~"kubernetes-pods"}'
+            - 'istio_requests_total'
+            - 'istio_request_messages_total'
       prometheus:
         config:
           scrape_configs:
