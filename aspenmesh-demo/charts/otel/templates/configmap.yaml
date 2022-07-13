@@ -18,6 +18,11 @@ data:
             match[]:
             - 'istio_requests_total'
             - 'istio_request_messages_total'
+            - 'istio_request_duration_milliseconds_bucket'
+            - 'istio_request_bytes_count'
+            - 'istio_request_bytes_sum'
+            - 'istio_response_bytes_count'
+            - 'istio_response_bytes_sum'
       prometheus:
         config:
           scrape_configs:
