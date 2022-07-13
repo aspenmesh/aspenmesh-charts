@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   aspenmesh-demo:
   - apiVersion: v2
-    created: "2022-06-18T13:05:23.946605439Z"
+    created: "2022-07-13T20:53:35.605000302Z"
     dependencies:
     - condition: adservice.enabled
       name: adservice
@@ -47,11 +47,11 @@ entries:
       name: loadgenerator
       repository: ""
     description: Aspen Mesh Demo Site
-    digest: ebcda7faa9e173a70774b800fbd58e8247cca3635d314adf3bb589c165459433
+    digest: 2855eeabaaddf93e316351ec8139b16ec053e5657fd70ff4d696f772a84a7ca5
     icon: https://brianjimerson.github.io/aspenmesh-demo-site-charts/assets/aspenmesh.png
     name: aspenmesh-demo
     type: application
     urls:
     - https://aspenmesh.github.io/aspenmesh-demo-site-charts/aspenmesh-demo-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-18T13:05:23.939710251Z"
+generated: "2022-07-13T20:53:35.599909129Z"
