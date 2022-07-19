@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "otelcollector.fullname" . }}
-  namespace: {{ .Values.otelcollector.namespace }}
+  namespace: {{ .Values.namespace }}
   labels:
     {{- include "otelcollector.labels" . | nindent 4 }}
 spec:
@@ -19,7 +19,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "otelagent.fullname" . }}
-  namespace: {{ .Values.otelagent.namespace }}
+  namespace: {{ .Values.namespace }}
   labels:
     {{- include "otelagent.labels" . | nindent 4 }}
 spec:
