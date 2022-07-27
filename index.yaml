@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   aspenmesh-demo:
   - apiVersion: v2
-    created: "2022-07-27T21:52:59.350731207Z"
+    created: "2022-07-27T21:54:24.589779119Z"
     dependencies:
     - condition: adservice.enabled
       name: adservice
@@ -47,7 +47,7 @@ entries:
       name: loadgenerator
       repository: ""
     description: Aspen Mesh Demo Site
-    digest: e19c6b8821406ebcae2e72e7f7f9f68d7e7956fe7c40aea9ab35b1765cb0a930
+    digest: bd06e8ce4efb63389860b9e3d1137cbc586b286b726775c294ea5c05ef483e4a
     icon: https://brianjimerson.github.io/aspenmesh-demo-site-charts/assets/aspenmesh.png
     name: aspenmesh-demo
     type: application
@@ -57,11 +57,11 @@ entries:
   otel:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-07-27T21:52:59.351297647Z"
-    digest: cb1c0f0c26b7167e95b059cd201d04a2ee44bb69ad668742abf2dc47c67191e4
+    created: "2022-07-27T21:54:24.590360139Z"
+    digest: 8c94f9a9d4aca1f895fa7ffe0ce658614a880f88c9f669a74324347408fbb5e2
     name: otel
     type: application
     urls:
     - https://aspenmesh.github.io/aspenmesh-demo-site-charts/otel-0.1.0.tgz
     version: 0.1.0
-generated: "2022-07-27T21:52:59.345597654Z"
+generated: "2022-07-27T21:54:24.584429563Z"
