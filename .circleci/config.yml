@@ -12,6 +12,11 @@ jobs:
             TAG=0.1.0
             helm package aspenmesh-demo/ --version $TAG            
       - run:
+          name: Helm package
+          command: |
+            TAG=0.1.0
+            helm package otel/ --version $TAG            
+      - run:
           name: Helm index
           command: helm repo index --url https://aspenmesh.github.io/aspenmesh-demo-site-charts/ --merge index.yaml .
       - add_ssh_keys:
@@ -30,3 +35,4 @@ workflows:
   helm-chart-release:
     jobs:
       - release
+      
