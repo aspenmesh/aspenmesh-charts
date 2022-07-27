@@ -1,0 +1,171 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: adservice-fault-vs
+  namespace: ad-engine
+spec:
+  hosts:
+  - adservice.ad-engine.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: adservice.ad-engine.svc.cluster.local
+        subset: v1
+    fault:
+      abort:
+        percentage:
+          value: 20
+        httpStatus: 500
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: checkoutservice-fault-vs
+  namespace: checkout
+spec:
+  hosts:
+  - checkoutservice.checkout.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: checkoutservice.checkout.svc.cluster.local
+        subset: v1
+    fault:
+      abort:
+        percentage:
+          value: 20
+        httpStatus: 500
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: emailservice-fault-vs
+  namespace: fulfillment
+spec:
+  hosts:
+  - emailservice.fulfillment.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: cemailservice.fulfillment.svc.cluster.local
+        subset: v1
+    fault:
+      abort:
+        percentage:
+          value: 20
+        httpStatus: 500
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: shippingservice-fault-vs
+  namespace: fulfillment
+spec:
+  hosts:
+  - shippingservice.fulfillment.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: shippingservice.fulfillment.svc.cluster.local
+        subset: v1
+    fault:
+      abort:
+        percentage:
+          value: 20
+        httpStatus: 500
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: currencyservice-fault-vs
+  namespace: payments
+spec:
+  hosts:
+  - currencyservice.payments.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: currencyservice.payments.svc.cluster.local
+        subset: v1
+    fault:
+      abort:
+        percentage:
+          value: 20
+        httpStatus: 500
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: paymentservice-fault-vs
+  namespace: payments
+spec:
+  hosts:
+  - paymentservice.payments.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: paymentservice.payments.svc.cluster.local
+        subset: v1
+    fault:
+      abort:
+        percentage:
+          value: 20
+        httpStatus: 500
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: productcatalogservice-fault-vs
+  namespace: product-catalog
+spec:
+  hosts:
+  - productcatalogservice.product-catalog.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: productcatalogservice.product-catalog.svc.cluster.local
+        subset: v1
+    fault:
+      abort:
+        percentage:
+          value: 20
+        httpStatus: 500
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: recommendationservice-fault-vs
+  namespace: recommendations
+spec:
+  hosts:
+  - recommendationservice.recommendations.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: recommendationservice.recommendations.svc.cluster.local
+        subset: v1
+    fault:
+      abort:
+        percentage:
+          value: 20
+        httpStatus: 500
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: cartservice-fault-vs
+  namespace: shopping-cart
+spec:
+  hosts:
+  - cartservice.shopping-cart.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: cartservice.shopping-cart.svc.cluster.local
+        subset: v1
+    fault:
+      abort:
+        percentage:
+          value: 20
+        httpStatus: 500
+---
