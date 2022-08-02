@@ -28,6 +28,8 @@ data:
             - 'istio_tcp_received_bytes_total'
             - 'istio_tcp_connections_opened_total'
             - 'istio_tcp_connections_closed_total'
+            - 'container_cpu_usage_seconds_total'
+            - 'container_memory_working_set_bytes'
       prometheus:
         config:
           scrape_configs:
