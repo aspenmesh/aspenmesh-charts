@@ -3,10 +3,33 @@ serviceAccount:
   name: otel-sa
 clusterRole:
   name: otel-role
+  rules:
+    all:
+      resources:
+        - nodes
+        - nodes/metrics
+        - services
+        - endpoints
+        - pods
+      verbs:
+        - get
+        - list
+        - watch
+    networking:
+      resources:
+        - ingresses
+      verbs:
+        - get
+        - list
+        - watch
+    nonResourceURLs:
+    - /metrics
+    - /metrics/cadvisor
+    nonResourceURLVerbs:
+        - get
 clusterRoleBinding:
   name: otel-role-binding
-otelcollector:
-  tenantname: "TEST_TENANT"
+otelCollector:
   replicaCount: 1
   image:
     repository: otel/opentelemetry-collector-contrib
@@ -35,7 +58,75 @@ otelcollector:
     targetPort: 4317
     name: grpc-otlp
     protocol: TCP
-otelagent:
+  collectorConfig:
+    name: "collector-config"
+    enableOtlpReceiver: true
+    otlpReceiver:
+      protocols:
+        grpc:
+    enablePrometheusSimpleReceiver: true
+    prometheusSimpleReceiver:
+      matchParams:
+      - 'istio_requests_total'
+      - 'istio_request_duration_milliseconds_bucket'
+      - 'istio_request_bytes_count'
+      - 'istio_request_bytes_sum'
+      - 'istio_response_bytes_count'
+      - 'istio_response_bytes_sum'
+      - 'istio_request_messages_total'
+      - 'istio_response_messages_total'
+      - 'istio_tcp_sent_bytes_total'
+      - 'istio_tcp_received_bytes_total'
+      - 'istio_tcp_connections_opened_total'
+      - 'istio_tcp_connections_closed_total'
+      - 'container_cpu_usage_seconds_total'
+      - 'container_memory_working_set_bytes'
+      endpoint: "prometheus.istio-system:9090"
+      collectionInterval: 10s
+      metricsPath: /federate
+    enablePrometheusReceiver: true
+    prometheusReceiver:
+      scrapeConfigs:
+        - job_name: 'istiod'
+          kubernetes_sd_configs:
+          - role: endpoints
+            namespaces:
+              names:
+              - istio-system
+          relabel_configs:
+          - source_labels: [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+            action: keep
+            regex: istiod;http-monitoring
+        - job_name: 'envoy-stats'
+          metrics_path: /stats/prometheus
+          kubernetes_sd_configs:
+          - role: pod
+          relabel_configs:
+          - source_labels: [__meta_kubernetes_pod_container_port_name]
+            action: keep
+            regex: '.*-envoy-prom'
+    enableLoggingExporter: true
+    loggingExporter:
+      logLevel: info
+    enablePrometheusRemoteWriteExporter: true
+    prometheusRemoteWriteExporter:
+      endpoint: https://metrics.cloud.aspenmesh.io/write
+      externalLabels:
+        cluster: aspenmesh-saas-demo-otel
+        __replica__: otel-replica
+      timeout: 30s
+      headers:
+        TENANT: TEST_TENANT
+        Authorization: "Basic cHJvbXNjYWxlOlFuVXlOMVZaV2paVGNWSldMMmhrZUc1aU1qRjJjbFIyY0dZeldUWXJNRWd5WXpOVGRUQXZiMUZGU1QwSw=="
+    metrics:
+      receivers: 
+        - otlp
+        - prometheus_simple
+      processors: []
+      exporters: 
+        - logging
+        - prometheusremotewrite
+otelAgent:
   replicaCount: 1
   image:
     repository: otel/opentelemetry-collector-contrib
@@ -66,3 +157,30 @@ otelagent:
     targetPort: 4317
     name: grpc-otlp
     protocol: TCP
+  agentConfig:
+    name: "agent-config"
+    enableOtlpReceiver: true
+    otlpReceiver:
+      protocols:
+        grpc:
+    enableLoggingExporter: true
+    loggingExporter:
+      logLevel: info
+    enableOtlpExporter: true
+    otlpExporter:
+      endpoint: "opentelemetrycollector.otel.svc.cluster.local:4317"
+      insecure: true
+    metrics:
+      receivers: 
+        - otlp
+      processors: []
+      exporters: 
+        - logging
+        - otlp
+    traces:
+      receivers: 
+        - otlp
+      processors: []
+      exporters: 
+        - logging
+        - otlp

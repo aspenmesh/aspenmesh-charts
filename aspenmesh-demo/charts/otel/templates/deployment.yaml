@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "otelcollector.fullname" . }}
+  name: {{ include "otelCollector.fullname" . }}
   namespace: {{ .Values.namespace }}
   labels:
-    {{- include "otelcollector.labels" . | nindent 4 }}
+    {{- include "otelCollector.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.otelcollector.replicaCount }}
+  replicas: {{ .Values.otelCollector.replicaCount }}
   selector:
     matchLabels:
-      {{- include "otelcollector.selectorLabels" . | nindent 6 }}
+      {{- include "otelCollector.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -17,16 +17,16 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "otelcollector.selectorLabels" . | nindent 8 }}
+        {{- include "otelCollector.selectorLabels" . | nindent 8 }}
     spec:
       serviceAccountName: {{ include "otel.serviceAccountName" . }}
       containers:
-        - name: {{ default .Chart.Name .Values.otelcollector.container.name }}
-          image: "{{ .Values.otelcollector.image.repository }}:{{ .Values.otelcollector.image.tag | default .Chart.AppVersion }}"
+        - name: {{ default .Chart.Name .Values.otelCollector.container.name }}
+          image: "{{ .Values.otelCollector.image.repository }}:{{ .Values.otelCollector.image.tag | default .Chart.AppVersion }}"
           args:
-            {{- toYaml .Values.otelcollector.container.args  | nindent 12 }}
+            {{- toYaml .Values.otelCollector.container.args  | nindent 12 }}
           volumeMounts:
-            {{- toYaml .Values.otelcollector.container.volumeMounts  | nindent 12 }}
+            {{- toYaml .Values.otelCollector.container.volumeMounts  | nindent 12 }}
       volumes:
-        {{- toYaml .Values.otelcollector.volumes  | nindent 8 }}
+        {{- toYaml .Values.otelCollector.volumes  | nindent 8 }}
 

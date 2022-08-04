@@ -5,7 +5,7 @@ clusterRole:
   name: otel-role
 clusterRoleBinding:
   name: otel-role-binding
-otelcollector:
+otelCollector:
   tenantname: "TEST_TENANT"
   replicaCount: 1
   image:
@@ -35,7 +35,7 @@ otelcollector:
     targetPort: 4317
     name: grpc-otlp
     protocol: TCP
-otelagent:
+otelAgent:
   replicaCount: 1
   image:
     repository: otel/opentelemetry-collector-contrib

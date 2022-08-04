@@ -60,7 +60,7 @@ data:
           __replica__: otel-replica
         timeout: 30s
         headers:
-          TENANT: {{ .Values.otelcollector.tenantName }}
+          TENANT: {{ .Values.otelCollector.tenantName }}
           Authorization: Basic cHJvbXNjYWxlOlFuVXlOMVZaV2paVGNWSldMMmhrZUc1aU1qRjJjbFIyY0dZeldUWXJNRWd5WXpOVGRUQXZiMUZGU1QwSw==
     service:
       pipelines:

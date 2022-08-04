@@ -1,8 +1,8 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "otelcollector.name" -}}
-{{- default .Chart.Name .Values.otelcollector.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- define "otelCollector.name" -}}
+{{- default .Chart.Name .Values.otelCollector.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
@@ -10,11 +10,11 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "otelcollector.fullname" -}}
-{{- if .Values.otelcollector.fullnameOverride }}
-{{- .Values.otelcollector.fullnameOverride | trunc 63 | trimSuffix "-" }}
+{{- define "otelCollector.fullname" -}}
+{{- if .Values.otelCollector.fullnameOverride }}
+{{- .Values.otelCollector.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
-{{- $name := default .Chart.Name .Values.otelcollector.nameOverride }}
+{{- $name := default .Chart.Name .Values.otelCollector.nameOverride }}
 {{- if contains $name .Release.Name }}
 {{- .Release.Name | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -33,9 +33,9 @@ Create chart name and version as used by the chart label.
 {{/*
 Common labels
 */}}
-{{- define "otelcollector.labels" -}}
+{{- define "otelCollector.labels" -}}
 helm.sh/chart: {{ include "otel.chart" . }}
-{{ include "otelcollector.selectorLabels" . }}
+{{ include "otelCollector.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,16 +45,16 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "otelcollector.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "otelcollector.name" . }}
+{{- define "otelCollector.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "otelCollector.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "otelagent.name" -}}
-{{- default .Chart.Name .Values.otelagent.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- define "otelAgent.name" -}}
+{{- default .Chart.Name .Values.otelAgent.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
@@ -62,11 +62,11 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "otelagent.fullname" -}}
-{{- if .Values.otelagent.fullnameOverride }}
-{{- .Values.otelagent.fullnameOverride | trunc 63 | trimSuffix "-" }}
+{{- define "otelAgent.fullname" -}}
+{{- if .Values.otelAgent.fullnameOverride }}
+{{- .Values.otelAgent.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
-{{- $name := default .Chart.Name .Values.otelagent.nameOverride }}
+{{- $name := default .Chart.Name .Values.otelAgent.nameOverride }}
 {{- if contains $name .Release.Name }}
 {{- .Release.Name | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -78,9 +78,9 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Common labels
 */}}
-{{- define "otelagent.labels" -}}
+{{- define "otelAgent.labels" -}}
 helm.sh/chart: {{ include "otel.chart" . }}
-{{ include "otelagent.selectorLabels" . }}
+{{ include "otelAgent.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -90,8 +90,8 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "otelagent.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "otelagent.name" . }}
+{{- define "otelAgent.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "otelAgent.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
@@ -100,7 +100,7 @@ Create the name of the service account to use
 */}}
 {{- define "otel.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "otelcollector.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "otelCollector.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
