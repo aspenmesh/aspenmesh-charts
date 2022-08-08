@@ -11,6 +11,7 @@ clusterRole:
         - services
         - endpoints
         - pods
+        - configmaps
       verbs:
         - get
         - list
@@ -116,13 +117,16 @@ otelCollector:
         __replica__: otel-replica
       timeout: 30s
       headers:
-        TENANT: TEST_TENANT
+        TENANT: ASPEN_SAAS_DEMO
         Authorization: "Basic cHJvbXNjYWxlOlFuVXlOMVZaV2paVGNWSldMMmhrZUc1aU1qRjJjbFIyY0dZeldUWXJNRWd5WXpOVGRUQXZiMUZGU1QwSw=="
     metrics:
       receivers: 
         - otlp
         - prometheus_simple
-      processors: []
+      processors:
+        - resourcedetection/eks
+        - resourcedetection/aks
+        - resourcedetection/gke
       exporters: 
         - logging
         - prometheusremotewrite

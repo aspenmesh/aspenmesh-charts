@@ -28,6 +28,18 @@ data:
             {{- toYaml .Values.otelCollector.collectorConfig.prometheusReceiver.scrapeConfigs | nindent 12 }}
       {{- end }}
     processors:
+      resourcedetection/eks:
+        detectors: [env, eks]
+        timeout: 2s
+        override: false
+      resourcedetection/aks:
+        detectors: [env, aks]
+        timeout: 2s
+        override: false
+      resourcedetection/gke:
+        detectors: [env, gke]
+        timeout: 2s
+        override: false
     exporters:
       {{- if .Values.otelCollector.collectorConfig.enableLoggingExporter }}
       logging:
