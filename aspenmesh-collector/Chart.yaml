@@ -4,5 +4,5 @@ type: application
 version: 1.0.0
 appVersion: "0.1.0"
 description: Aspen Mesh Collector
-icon: https://https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
+icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
 
