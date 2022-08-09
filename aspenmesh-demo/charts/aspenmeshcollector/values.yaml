@@ -35,7 +35,7 @@ aspenmeshCollector:
   image:
     repository: otel/opentelemetry-collector-contrib
     pullPolicy: Always
-    tag: "0.57.0"
+    tag: "0.57.2"
   nameOverride: "amcollector"
   fullnameOverride: "amcollector"
   containerPort: 4317
@@ -135,7 +135,7 @@ aspenmeshAgent:
   image:
     repository: otel/opentelemetry-collector-contrib
     pullPolicy: Always
-    tag: "0.50.0"
+    tag: "0.50.2"
   nameOverride: "amagent"
   fullnameOverride: "amagent"
   ports: 
