@@ -1,4 +1,4 @@
-namespace: "am-collector"
+namespace: "aspenmesh"
 serviceAccount: 
   name: am-collector-sa
 clusterRole:
