@@ -6,7 +6,7 @@ entries:
     created: "2022-08-09T20:25:22.203134656Z"
     description: Aspen Mesh Collector
     digest: f4e64833dc9be5829821dfde6397ca75cdd128ef6970c7f2aee2f6e7d998cdb6
-    icon: https://https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
+    icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
     name: aspenmesh-collector
     type: application
     urls:
@@ -61,7 +61,7 @@ entries:
       repository: ""
     description: Aspen Mesh Demo Site
     digest: a04ce5f85502b2f1ef1159bc2701fd4fb2f081e0fc5f9184a11e93e2d5f4f09f
-    icon: https://https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
+    icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
     name: aspenmesh-demo
     type: application
     urls:
