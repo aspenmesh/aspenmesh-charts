@@ -1,9 +1,10 @@
 apiVersion: v2
 name: aspenmesh-demo
 description: Aspen Mesh Demo Site
-icon: https://brianjimerson.github.io/aspenmesh-demo-site-charts/assets/aspenmesh.png
+icon: https://https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
 type: application
-version: 0.1.0
+version: 1.0.0
+appVersion: 0.1.0
 dependencies:
   - name: adservice
     condition: adservice.enabled

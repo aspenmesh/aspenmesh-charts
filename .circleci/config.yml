@@ -12,10 +12,10 @@ jobs:
             TAG=0.1.0
             helm package aspenmesh-demo/ --version $TAG            
       - run:
-          name: Package otel chart
+          name: Package am-collector chart
           command: |
             TAG=0.1.0
-            helm package otel/ --version $TAG            
+            helm package am-collector/ --version $TAG            
       - run:
           name: Build Helm index
           command: |

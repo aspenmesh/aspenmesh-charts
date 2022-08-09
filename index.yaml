@@ -48,7 +48,7 @@ entries:
       repository: ""
     description: Aspen Mesh Demo Site
     digest: 69ed6ec804a4a105066062b656ae20e923d17aba25f2d1121d01e7103346c411
-    icon: https://brianjimerson.github.io/aspenmesh-demo-site-charts/assets/aspenmesh.png
+    icon: https://aspenmesh.github.io/aspenmesh-demo-site-charts/docs/images/aspenmesh.png
     name: aspenmesh-demo
     type: application
     urls:

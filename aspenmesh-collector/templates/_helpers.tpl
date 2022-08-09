@@ -1,8 +1,8 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "otelCollector.name" -}}
-{{- default .Chart.Name .Values.otelCollector.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- define "aspenmeshCollector.name" -}}
+{{- default .Chart.Name .Values.aspenmeshCollector.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
@@ -10,11 +10,11 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "otelCollector.fullname" -}}
-{{- if .Values.otelCollector.fullnameOverride }}
-{{- .Values.otelCollector.fullnameOverride | trunc 63 | trimSuffix "-" }}
+{{- define "aspenmeshCollector.fullname" -}}
+{{- if .Values.aspenmeshCollector.fullnameOverride }}
+{{- .Values.aspenmeshCollector.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
-{{- $name := default .Chart.Name .Values.otelCollector.nameOverride }}
+{{- $name := default .Chart.Name .Values.aspenmeshCollector.nameOverride }}
 {{- if contains $name .Release.Name }}
 {{- .Release.Name | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "otel.chart" -}}
+{{- define "am.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "otelCollector.labels" -}}
-helm.sh/chart: {{ include "otel.chart" . }}
-{{ include "otelCollector.selectorLabels" . }}
+{{- define "aspenmeshCollector.labels" -}}
+helm.sh/chart: {{ include "am.chart" . }}
+{{ include "aspenmeshCollector.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,16 +45,16 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "otelCollector.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "otelCollector.name" . }}
+{{- define "aspenmeshCollector.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "aspenmeshCollector.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "otelAgent.name" -}}
-{{- default .Chart.Name .Values.otelAgent.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- define "aspenmeshAgent.name" -}}
+{{- default .Chart.Name .Values.aspenmeshAgent.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
@@ -62,11 +62,11 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "otelAgent.fullname" -}}
-{{- if .Values.otelAgent.fullnameOverride }}
-{{- .Values.otelAgent.fullnameOverride | trunc 63 | trimSuffix "-" }}
+{{- define "aspenmeshAgent.fullname" -}}
+{{- if .Values.aspenmeshAgent.fullnameOverride }}
+{{- .Values.aspenmeshAgent.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
-{{- $name := default .Chart.Name .Values.otelAgent.nameOverride }}
+{{- $name := default .Chart.Name .Values.aspenmeshAgent.nameOverride }}
 {{- if contains $name .Release.Name }}
 {{- .Release.Name | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -78,9 +78,9 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Common labels
 */}}
-{{- define "otelAgent.labels" -}}
-helm.sh/chart: {{ include "otel.chart" . }}
-{{ include "otelAgent.selectorLabels" . }}
+{{- define "aspenmeshAgent.labels" -}}
+helm.sh/chart: {{ include "am.chart" . }}
+{{ include "aspenmeshAgent.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -90,17 +90,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "otelAgent.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "otelAgent.name" . }}
+{{- define "aspenmeshAgent.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "aspenmeshAgent.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "otel.serviceAccountName" -}}
+{{- define "am.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "otelCollector.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "aspenmeshCollector.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

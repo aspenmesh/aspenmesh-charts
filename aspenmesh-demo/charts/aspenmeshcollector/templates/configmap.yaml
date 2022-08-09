@@ -1,0 +1,98 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.aspenmeshCollector.collectorConfig.name }}
+  namespace: {{ .Values.namespace }}
+data:
+  collector.yaml: |
+    receivers:
+      {{- if .Values.aspenmeshCollector.collectorConfig.enableOtlpReceiver }}
+      otlp:
+        protocols:
+          {{- toYaml .Values.aspenmeshCollector.collectorConfig.otlpReceiver.protocols | nindent 12 }}
+      {{- end}}
+      {{- if .Values.aspenmeshCollector.collectorConfig.enablePrometheusSimpleReceiver }}
+      prometheus_simple:
+        endpoint: {{ .Values.aspenmeshCollector.collectorConfig.prometheusSimpleReceiver.endpoint }}
+        collection_interval: {{ .Values.aspenmeshCollector.collectorConfig.prometheusSimpleReceiver.collectionInterval }}
+        metrics_path: {{ .Values.aspenmeshCollector.collectorConfig.prometheusSimpleReceiver.metricsPath }}
+        params:
+            match[]:
+            {{- toYaml .Values.aspenmeshCollector.collectorConfig.prometheusSimpleReceiver.matchParams | nindent 12 }}
+      {{- end }}
+      {{- if .Values.aspenmeshCollector.collectorConfig.enablePrometheusReceiver }}
+      prometheus:
+        config:
+          scrape_configs:
+            {{- toYaml .Values.aspenmeshCollector.collectorConfig.prometheusReceiver.scrapeConfigs | nindent 12 }}
+      {{- end }}
+    processors:
+      resourcedetection/eks:
+        detectors: [env, eks]
+        timeout: 2s
+        override: false
+      resourcedetection/aks:
+        detectors: [env, aks]
+        timeout: 2s
+        override: false
+      resourcedetection/gke:
+        detectors: [env, gke]
+        timeout: 2s
+        override: false
+    exporters:
+      {{- if .Values.aspenmeshCollector.collectorConfig.enableLoggingExporter }}
+      logging:
+        loglevel: {{ .Values.aspenmeshCollector.collectorConfig.loggingExporter.logLevel }}
+      {{- end }}
+      {{- if .Values.aspenmeshCollector.collectorConfig.enablePrometheusRemoteWriteExporter }}
+      prometheusremotewrite:
+        endpoint: {{ .Values.aspenmeshCollector.collectorConfig.prometheusRemoteWriteExporter.endpoint }}
+        external_labels:
+          {{- toYaml .Values.aspenmeshCollector.collectorConfig.prometheusRemoteWriteExporter.externalLabels | nindent 12}}
+        timeout: {{ .Values.aspenmeshCollector.collectorConfig.prometheusRemoteWriteExporter.timeout }}
+        headers:
+          {{- toYaml .Values.aspenmeshCollector.collectorConfig.prometheusRemoteWriteExporter.headers | nindent 12}}
+      {{- end }}
+    service:
+      pipelines:
+        metrics:
+         receivers: {{- toYaml .Values.aspenmeshCollector.collectorConfig.metrics.receivers | nindent 12 }}
+         processors: {{- toYaml .Values.aspenmeshCollector.collectorConfig.metrics.processors | nindent 12}}
+         exporters: {{- toYaml .Values.aspenmeshCollector.collectorConfig.metrics.exporters | nindent 12}}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.aspenmeshAgent.agentConfig.name }}
+  namespace: {{ .Values.namespace}}
+data:
+  agent.yaml: |
+    receivers:
+      {{- if .Values.aspenmeshAgent.agentConfig.enableOtlpReceiver }}
+      otlp:
+        protocols:
+          {{- toYaml .Values.aspenmeshAgent.agentConfig.otlpReceiver.protocols | nindent 12 }}
+      {{- end}}
+    processors:
+    exporters:
+      {{- if .Values.aspenmeshAgent.agentConfig.enableLoggingExporter }}
+      logging:
+        loglevel: {{ .Values.aspenmeshAgent.agentConfig.loggingExporter.logLevel }}
+      {{- end }}
+      {{- if .Values.aspenmeshAgent.agentConfig.enableOtlpExporter }}
+      otlp:
+        endpoint: {{ .Values.aspenmeshAgent.agentConfig.otlpExporter.endpoint }}
+        tls:
+          insecure: {{ .Values.aspenmeshAgent.agentConfig.otlpExporter.insecure }}
+      {{- end }}
+    service:
+      pipelines:
+        traces:
+          receivers: {{- toYaml .Values.aspenmeshAgent.agentConfig.traces.receivers | nindent 12 }}
+          processors: {{- toYaml .Values.aspenmeshAgent.agentConfig.traces.processors | nindent 12}}
+          exporters: {{- toYaml .Values.aspenmeshAgent.agentConfig.traces.exporters | nindent 12}}
+        metrics:
+          receivers: {{- toYaml .Values.aspenmeshAgent.agentConfig.metrics.receivers | nindent 12 }}
+          processors: {{- toYaml .Values.aspenmeshAgent.agentConfig.metrics.processors | nindent 12}}
+          exporters: {{- toYaml .Values.aspenmeshAgent.agentConfig.metrics.exporters | nindent 12}}
