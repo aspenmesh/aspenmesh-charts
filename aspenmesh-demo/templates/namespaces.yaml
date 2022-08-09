@@ -2,9 +2,9 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: otel
+  name: aspenmesh-collector
   labels:
-    name: otel
+    name: aspenmesh-collector
 ---
 kind: Namespace
 apiVersion: v1

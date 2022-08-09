@@ -20,10 +20,10 @@ istio-ingress   LoadBalancer   172.20.253.198   <hostname>   15021:31684/TCP,80:
 
 ### Step 3
 
-Install the Aspen Mesh Demo Site in an existing cluster.  Note that you need to set the `otel.otelcollector.tenantName` value to the value given to you by Aspen Mesh, and the `frontend.hostnames` value to the DNS hostname in [Step 4](#step-4).
+Install the Aspen Mesh Demo Site in an existing cluster.  Note that you need to set the `aspenmeshCollector.collectorConfig.prometheusRemoteWriteExporter.HEADERS.tenantName` value to the value given to you by Aspen Mesh, and the `frontend.hostnames` value to the DNS hostname in [Step 4](#step-4).
 
 ```bash
-helm install aspenmesh-demo aspenmesh/aspenmesh-demo --set otel.otelcollector.tenantName=mytenantname --set "frontend.hostnames={demo.mysite.com}" 
+helm install aspenmesh-demo aspenmesh/aspenmesh-demo --set aspenmeshCollector.collectorConfig.prometheusRemoteWriteExporter.HEADERS.tenantName=mytenantname --set "frontend.hostnames={demo.mysite.com}" 
 
 NAME: aspenmesh-demo
 LAST DEPLOYED: Fri Jun 17 15:48:57 2022
