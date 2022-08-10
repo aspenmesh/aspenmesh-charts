@@ -3,9 +3,9 @@ entries:
   aspenmesh-collector:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2022-08-09T21:00:19.826991568Z"
+    created: "2022-08-10T13:28:34.200624586Z"
     description: Aspen Mesh Collector
-    digest: a344acdbc71fdfa2497f7dd4f1492782e3b0d2a58877242efa8b1f7795b74246
+    digest: d066c48776e0e7ea1269f020b44655db36b44df28340b97452593aab5fd84afe
     icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
     name: aspenmesh-collector
     type: application
@@ -15,7 +15,7 @@ entries:
   aspenmesh-demo:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2022-08-09T21:00:19.832628746Z"
+    created: "2022-08-10T13:28:34.205723466Z"
     dependencies:
     - condition: adservice.enabled
       name: adservice
@@ -53,18 +53,15 @@ entries:
     - condition: shippingservice.enabled
       name: shippingservice
       repository: ""
-    - condition: aspenmeshcollector.enabled
-      name: aspenmeshcollector
-      repository: ""
     - condition: loadgenerator.enabled
       name: loadgenerator
       repository: ""
     description: Aspen Mesh Demo Site
-    digest: 5b73a7812f49e8a1525d20024078e801a17de096b9ece1269cc42e87faf20b56
+    digest: 1ae867c58b774c07468011fafc46bd02da2e71d4e29a90000bd9ac159b26ac5b
     icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
     name: aspenmesh-demo
     type: application
     urls:
     - https://aspenmesh.github.io/aspenmesh-charts/aspenmesh-demo-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-09T21:00:19.825917056Z"
+generated: "2022-08-10T13:28:34.199524107Z"
