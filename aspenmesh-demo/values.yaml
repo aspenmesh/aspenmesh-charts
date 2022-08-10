@@ -23,9 +23,5 @@ redis:
   enabled: true
 shippingservice:
   enabled: true
-aspenmeshcollector:
-  enabled: true
-  aspenmeshcollector:
-    tenantname: "TEST_TENANT"
 loadgenerator:
   enabled: true

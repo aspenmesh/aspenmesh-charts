@@ -30,7 +30,5 @@ dependencies:
     condition: redis.enabled
   - name: shippingservice
     condition: shippingservice.enabled
-  - name: aspenmeshcollector
-    condition: aspenmeshcollector.enabled
   - name: loadgenerator
     condition: loadgenerator.enabled

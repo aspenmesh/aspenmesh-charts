@@ -135,7 +135,7 @@ aspenmeshAgent:
   image:
     repository: otel/opentelemetry-collector-contrib
     pullPolicy: Always
-    tag: "0.50.2"
+    tag: "0.57.2"
   nameOverride: "amagent"
   fullnameOverride: "amagent"
   ports: 
