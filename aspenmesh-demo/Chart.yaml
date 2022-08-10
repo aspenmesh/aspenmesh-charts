@@ -3,8 +3,8 @@ name: aspenmesh-demo
 description: Aspen Mesh Demo Site
 icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
 type: application
-version: 1.0.0
-appVersion: 0.1.0
+version: 0.1.0
+appVersion: "0.1.0"
 dependencies:
   - name: adservice
     condition: adservice.enabled
