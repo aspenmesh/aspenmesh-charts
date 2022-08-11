@@ -53,6 +53,8 @@ data:
         timeout: {{ .Values.aspenmeshCollector.collectorConfig.prometheusRemoteWriteExporter.timeout }}
         headers:
           {{- toYaml .Values.aspenmeshCollector.collectorConfig.prometheusRemoteWriteExporter.headers | nindent 12}}
+        resource_to_telemetry_conversion:
+          enabled: {{ .Values.aspenmeshCollector.collectorConfig.prometheusRemoteWriteExporter.resourceConversionEnabled}}
       {{- end }}
     service:
       pipelines:

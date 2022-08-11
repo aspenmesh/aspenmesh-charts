@@ -119,6 +119,7 @@ aspenmeshCollector:
       headers:
         TENANT: ASPEN_SAAS_DEMO
         Authorization: "Basic cHJvbXNjYWxlOlFuVXlOMVZaV2paVGNWSldMMmhrZUc1aU1qRjJjbFIyY0dZeldUWXJNRWd5WXpOVGRUQXZiMUZGU1QwSw=="
+      resourceConversionEnabled: true
     metrics:
       receivers: 
         - otlp
