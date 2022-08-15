@@ -33,7 +33,7 @@ clusterRoleBinding:
 aspenmeshCollector:
   replicaCount: 1
   image:
-    repository: otel/opentelemetry-collector-contrib
+    repository: harbor.pintobean.xyz/aspenmesh-collector/otelcontribcol 
     pullPolicy: Always
     tag: "0.57.2"
   nameOverride: "amcollector"
@@ -134,7 +134,7 @@ aspenmeshCollector:
 aspenmeshAgent:
   replicaCount: 1
   image:
-    repository: otel/opentelemetry-collector-contrib
+    repository: harbor.pintobean.xyz/aspenmesh-collector/otelcontribcol 
     pullPolicy: Always
     tag: "0.57.2"
   nameOverride: "amagent"
