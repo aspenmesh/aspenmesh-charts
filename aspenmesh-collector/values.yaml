@@ -33,9 +33,9 @@ clusterRoleBinding:
 aspenmeshCollector:
   replicaCount: 1
   image:
-    repository: harbor.pintobean.xyz/aspenmesh-collector/otelcontribcol 
+    repository: harbor.pintobean.xyz/aspenmesh-collector/aspenmesh-collector 
     pullPolicy: Always
-    tag: "0.57.2"
+    tag: "0.1.0"
   nameOverride: "amcollector"
   fullnameOverride: "amcollector"
   containerPort: 4317
@@ -134,16 +134,16 @@ aspenmeshCollector:
 aspenmeshAgent:
   replicaCount: 1
   image:
-    repository: harbor.pintobean.xyz/aspenmesh-collector/otelcontribcol 
+    repository: harbor.pintobean.xyz/aspenmesh-collector/aspenmesh-collector 
     pullPolicy: Always
-    tag: "0.57.2"
+    tag: "0.1.0"
   nameOverride: "amagent"
   fullnameOverride: "amagent"
   ports: 
   - containerPort: 4317
   - containerPort: 8888
   container:
-    name: "otel-collector"
+    name: "aspenmesh-collector"
     args:
       - "--config=/conf/agent.yaml"
     volumeMounts:
