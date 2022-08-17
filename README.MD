@@ -19,7 +19,8 @@ Add this repository to your Helm client
    
 ```bash
 helm repo add aspenmesh https://aspenmesh.github.io/aspenmesh-charts/
-
+```
+```bash
 "aspenmesh" has been added to your repositories
 ```
 
@@ -29,7 +30,8 @@ Update your Helm client
 
 ```bash
 helm repo update
-
+```
+```bash
 Hang tight while we grab the latest from your chart repositories...
 ...Successfully got an update from the "aspenmesh" chart repository
 ```
@@ -40,10 +42,11 @@ Search for the Aspen Mesh chart
 
 ```bash
 helm search repo aspenmesh
-
+```
+```bash
 NAME                    	      CHART VERSION	APP VERSION	DESCRIPTION         
 aspenmesh/aspenmesh-demo	      0.1.0        	0.1.0      	Aspen Mesh Demo Site
-aspenmesh/aspenmesh-collector     0.1.0        	0.1.0       Aspen Mesh Collector
+aspenmesh/aspenmesh-collector    0.1.0        	0.1.0       Aspen Mesh Collector
 
 ```
 
