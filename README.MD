@@ -7,7 +7,7 @@ These are the official Helm charts for Aspen Mesh.
 The following are required before install Aspen Mesh applications:
 
  * Access to an existing [Kubernetes](https://kubernetes.io/docs/home/#set-up-a-k8s-cluster) cluster
- * [Istio 1.13 or higher](https://istio.io/latest/docs/setup/install/) installed in the cluster, with the ingress gateway installed.
+ * [Istio 1.13 or higher](https://istio.io/latest/docs/setup/install/) installed in the cluster.
  * [Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed on the machine that you'll be installing the demo site from.
  * [Helm v3](https://helm.sh/docs/intro/install/) client installed on the machine that you'll be installing the demo site from.
 
