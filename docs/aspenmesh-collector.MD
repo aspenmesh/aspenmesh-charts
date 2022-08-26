@@ -8,6 +8,15 @@ The Aspen Mesh Collector collects telemetry data from Kubernetes and Istio and s
 Make sure you've set up the Aspen Mesh Helm repository in this repository's [README](../README.MD).
 
 ### Step 2
+Create a namespace for the collector.
+
+```bash
+kubectl create namespace aspenmesh
+```
+
+`aspenmesh` is the default namespace.  If you choose a different one make sure that you set the `namespace` value in your Helm values override file.
+
+### Step 3
 
 Create a Helm values override file.  Here is what an example file would look like:
 
@@ -27,7 +36,7 @@ aspenmeshCollector:
         
 ```
 
-### Step 3
+### Step 4
 
 Install the Aspen Mesh Collector in an existing cluster. 
 
