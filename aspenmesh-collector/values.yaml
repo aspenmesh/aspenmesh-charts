@@ -145,7 +145,7 @@ aspenmeshAgent:
   container:
     name: "aspenmesh-collector"
     args:
-      - "--config=/conf/agent.yaml"
+    - "--config=/conf/agent.yaml"
     volumeMounts:
     - name: agent-config
       mountPath: /conf

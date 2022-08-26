@@ -23,8 +23,8 @@ spec:
       containers:
         - name: {{ default .Chart.Name .Values.aspenmeshAgent.container.name }}
           image: "{{ .Values.aspenmeshAgent.image.repository }}:{{ .Values.aspenmeshAgent.image.tag | default .Chart.AppVersion }}"
-          command:
-            {{- toYaml .Values.aspenmeshAgent.container.command  | nindent 12 }}
+          args:
+            {{- toYaml .Values.aspenmeshAgent.container.args  | nindent 12 }}
           volumeMounts:
             {{- toYaml .Values.aspenmeshAgent.container.volumeMounts  | nindent 12 }}
           ports:
