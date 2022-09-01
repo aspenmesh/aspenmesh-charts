@@ -132,7 +132,7 @@ aspenmeshCollector:
         - logging
         - prometheusremotewrite
 aspenmeshAgent:
-  replicaCount: 1
+  replicaCount: 3
   image:
     repository: harbor.pintobean.xyz/aspenmesh-collector/aspenmesh-collector 
     pullPolicy: Always
