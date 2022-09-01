@@ -2,13 +2,6 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: aspenmesh
-  labels:
-    name: aspenmesh
----
-kind: Namespace
-apiVersion: v1
-metadata:
   name: frontend
   labels:
     name: frontend
