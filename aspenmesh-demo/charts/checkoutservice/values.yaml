@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  repository: harbor.pintobean.xyz/aspenmesh-demo-site/checkoutservice
+  repository: ghcr.io/aspenmesh/checkoutservice
   pullPolicy: Always
   tag: "0.1.0"
 namespace: "checkout"

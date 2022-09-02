@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  repository: harbor.pintobean.xyz/aspenmesh-demo-site/adservice
+  repository: ghcr.io/aspenmesh/adservice
   pullPolicy: Always
   tag: "0.1.0"
 namespace: "ad-engine"

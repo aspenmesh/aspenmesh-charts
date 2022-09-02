@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  repository: harbor.pintobean.xyz/aspenmesh-demo-site/shippingservice
+  repository: ghcr.io/aspenmesh/shippingservice
   pullPolicy: Always
   tag: "0.1.0"
 namespace: "fulfillment"

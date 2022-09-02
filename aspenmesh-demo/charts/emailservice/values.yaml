@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  repository: harbor.pintobean.xyz/aspenmesh-demo-site/emailservice
+  repository: ghcr.io/aspenmesh/emailservice
   pullPolicy: Always
   tag: "0.1.0"
 namespace: "fulfillment"

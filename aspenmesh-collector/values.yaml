@@ -33,7 +33,7 @@ clusterRoleBinding:
 aspenmeshCollector:
   replicaCount: 1
   image:
-    repository: harbor.pintobean.xyz/aspenmesh-collector/aspenmesh-collector 
+    repository: ghcr.io/aspenmesh/aspenmesh-collector 
     pullPolicy: Always
     tag: "0.1.0"
   nameOverride: "amcollector"
@@ -134,7 +134,7 @@ aspenmeshCollector:
 aspenmeshAgent:
   replicaCount: 3
   image:
-    repository: harbor.pintobean.xyz/aspenmesh-collector/aspenmesh-collector 
+    repository: ghcr.io/aspenmesh/aspenmesh-collector 
     pullPolicy: Always
     tag: "0.1.0"
   nameOverride: "amagent"

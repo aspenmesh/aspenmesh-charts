@@ -36,7 +36,7 @@ spec:
           value: "frontend.frontend:8080"
       containers:
       - name: main
-        image: harbor.pintobean.xyz/aspenmesh-demo-site/loadgenerator:1.0.0
+        image: ghcr.io/aspenmesh/loadgenerator:1.0.0
         env:
         - name: FRONTEND_ADDR
           value: "frontend.frontend:8080"

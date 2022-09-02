@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  repository: harbor.pintobean.xyz/aspenmesh-demo-site/frontend
+  repository: ghcr.io/aspenmesh/frontend
   pullPolicy: Always
   tag: "0.1.0"
 namespace: "frontend"

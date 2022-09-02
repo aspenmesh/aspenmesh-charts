@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  repository: harbor.pintobean.xyz/aspenmesh-demo-site/cartservice
+  repository: ghcr.io/aspenmesh/cartservice
   pullPolicy: Always
   tag: "0.1.0"
 namespace: "shopping-cart"
