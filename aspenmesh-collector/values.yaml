@@ -35,7 +35,7 @@ aspenmeshCollector:
   image:
     repository: ghcr.io/aspenmesh/aspenmesh-collector 
     pullPolicy: Always
-    tag: "0.1.0"
+    tag: "0.1.1"
   nameOverride: "amcollector"
   fullnameOverride: "amcollector"
   containerPort: 4317
@@ -113,12 +113,13 @@ aspenmeshCollector:
     prometheusRemoteWriteExporter:
       endpoint: https://metrics.cloud.aspenmesh.io/write
       externalLabels:
-        cluster: aspenmesh-saas-demo-otel
-        __replica__: otel-replica
+        cluster: aspenmesh-saas-demo-otel # Only needed to override cluster name; don't set if no override
+        __replica__: otel-replica # Remove
       timeout: 30s
       headers:
-        TENANT: ASPEN_SAAS_DEMO
+        TENANT: ASPEN_SAAS_DEMO # Will be removed
         Authorization: "Basic cHJvbXNjYWxlOlFuVXlOMVZaV2paVGNWSldMMmhrZUc1aU1qRjJjbFIyY0dZeldUWXJNRWd5WXpOVGRUQXZiMUZGU1QwSw=="
+        #Authorization: "Bearer API_KEY"
       resourceConversionEnabled: true
     metrics:
       receivers: 
@@ -136,7 +137,7 @@ aspenmeshAgent:
   image:
     repository: ghcr.io/aspenmesh/aspenmesh-collector 
     pullPolicy: Always
-    tag: "0.1.0"
+    tag: "0.1.1"
   nameOverride: "amagent"
   fullnameOverride: "amagent"
   ports: 
