@@ -82,6 +82,9 @@ aspenmeshCollector:
       - 'istio_tcp_connections_closed_total'
       - 'container_cpu_usage_seconds_total'
       - 'container_memory_working_set_bytes'
+│     - 'kube_deployment_spec_replicas'                                                                                                                                                              │
+│     - 'kube_deployment_status_replicas'                                                                                                                                                            │
+│     - 'kube_deployment_status_replicas_available' 
       endpoint: "prometheus.istio-system:9090"
       collectionInterval: 10s
       metricsPath: /federate
