@@ -15,7 +15,9 @@ jobs:
           name: Package aspenmesh-collector chart
           command: |
             TAG=0.1.0
+            pushd aspenmesh-collector/
             helm dependency update
+            popd
             helm package aspenmesh-collector/ --version $TAG            
       - run:
           name: Build Helm index
