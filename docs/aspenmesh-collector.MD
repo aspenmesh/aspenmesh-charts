@@ -14,8 +14,6 @@ Create a namespace for the collector.
 kubectl create namespace aspenmesh
 ```
 
-`aspenmesh` is the default namespace.  If you choose a different one make sure that you set the `namespace` value in your Helm values override file.
-
 ### Step 3
 
 Create a Helm values override file.  Here is what an example file would look like:
@@ -41,7 +39,7 @@ aspenmeshCollector:
 Install the Aspen Mesh Collector in an existing cluster. 
 
 ```bash
-helm install aspenmesh-collector aspenmesh/aspenmesh-collector 
+helm install aspenmesh-collector aspenmesh/aspenmesh-collector -n aspenmesh
 NAME: aspenmesh-collector
 LAST DEPLOYED: Fri Jun 17 15:48:57 2022
 NAMESPACE: default

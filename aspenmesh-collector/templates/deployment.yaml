@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "aspenmeshCollector.fullname" . }}
-  namespace: {{ .Values.namespace }}
   labels:
     {{- include "aspenmeshCollector.labels" . | nindent 4 }}
 spec:

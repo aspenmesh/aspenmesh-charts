@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: {{ include "aspenmeshAgent.fullname" . }}
-  namespace: {{ .Values.namespace }}
   labels:
     {{- include "aspenmeshAgent.labels" . | nindent 4 }}
 spec:
