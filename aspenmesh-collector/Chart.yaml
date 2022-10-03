@@ -5,4 +5,11 @@ version: 0.1.0
 appVersion: "0.1.0"
 description: Aspen Mesh Collector
 icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
+dependencies:
+  - name: cert-manager
+    version: 1.8.2
+    repository: "https://charts.jetstack.io"
+  - name: kube-state-metrics
+    version: 4.20.0
+    repository: "https://prometheus-community.github.io/helm-charts"
 
