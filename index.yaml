@@ -3,7 +3,7 @@ entries:
   aspenmesh-collector:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2022-10-03T18:47:39.007568364Z"
+    created: "2022-10-03T18:50:18.967747117Z"
     dependencies:
     - name: cert-manager
       repository: https://charts.jetstack.io
@@ -12,7 +12,7 @@ entries:
       repository: https://prometheus-community.github.io/helm-charts
       version: 4.20.0
     description: Aspen Mesh Collector
-    digest: f1d38bacc8b03df6dbd5790fe305d1d396cf631979fe95b23236cdecc451cb28
+    digest: 13e51da7e377add6df1ab35ad713b0ee3ea09e220830fed4dfee9bceac7dc735
     icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
     name: aspenmesh-collector
     type: application
@@ -22,7 +22,7 @@ entries:
   aspenmesh-demo:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2022-10-03T18:47:39.013566277Z"
+    created: "2022-10-03T18:50:18.973833981Z"
     dependencies:
     - condition: adservice.enabled
       name: adservice
@@ -64,11 +64,11 @@ entries:
       name: loadgenerator
       repository: ""
     description: Aspen Mesh Demo Site
-    digest: 8fdaf52e42631535b4b20e2c64766e08ac4cd2d9541606dfd87d8b23bcc56bba
+    digest: 2b352fc6b77d1c2356cc7d4589bb3f318012d07a05d14c8c33789438123e103a
     icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
     name: aspenmesh-demo
     type: application
     urls:
     - https://aspenmesh.github.io/aspenmesh-charts/aspenmesh-demo-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-03T18:47:39.001261379Z"
+generated: "2022-10-03T18:50:18.959965625Z"
