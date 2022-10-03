@@ -10,11 +10,12 @@ jobs:
           name: Package aspenmesh-demo chart
           command: |
             TAG=0.1.0
-            helm package aspenmesh-demo/ --version $TAG            
+            helm package aspenmesh-demo/ --version $TAG        
       - run:
           name: Package aspenmesh-collector chart
           command: |
             TAG=0.1.0
+            helm dependency update
             helm package aspenmesh-collector/ --version $TAG            
       - run:
           name: Build Helm index
