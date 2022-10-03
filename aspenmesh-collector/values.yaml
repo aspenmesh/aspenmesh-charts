@@ -1,3 +1,5 @@
+cert-manager:
+  installCRDs: true
 serviceAccount: 
   name: am-collector-sa
 clusterRole:
