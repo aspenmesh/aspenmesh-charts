@@ -99,7 +99,7 @@ aspenmeshCollector:
         - job_name: kube-state-metrics
           static_configs:
           - targets:
-            - aspenmesh-collector-kube-state-metrics.{{ .Release.Name }}.svc.cluster.local:8080
+            - aspenmesh-collector-kube-state-metrics.aspenmesh.svc.cluster.local:8080
         - job_name: 'envoy-stats'
           metrics_path: /stats/prometheus
           kubernetes_sd_configs:
