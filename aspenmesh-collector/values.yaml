@@ -95,7 +95,7 @@ aspenmeshCollector:
         - job_name: prometheus
           static_configs:
           - targets:
-            - localhost:9090
+            - prometheus.istio-system:9090
         - job_name: kube-state-metrics
           static_configs:
           - targets:
@@ -124,14 +124,9 @@ aspenmeshCollector:
     enablePrometheusRemoteWriteExporter: true
     prometheusRemoteWriteExporter:
       endpoint: https://metrics.cloud.aspenmesh.io/write
-      externalLabels:
-        cluster: aspenmesh-saas-demo-otel # Only needed to override cluster name; don't set if no override
-        __replica__: otel-replica # Remove
       timeout: 30s
       headers:
-        TENANT: ASPEN_SAAS_DEMO # Will be removed
         Authorization: "Basic cHJvbXNjYWxlOlFuVXlOMVZaV2paVGNWSldMMmhrZUc1aU1qRjJjbFIyY0dZeldUWXJNRWd5WXpOVGRUQXZiMUZGU1QwSw=="
-        #Authorization: "Bearer API_KEY"
         X-AM-API-KEY: #whatever
       resourceConversionEnabled: true
     metrics:
