@@ -1,3 +1,5 @@
+postInstallUrl: www.google.com
+postDeleteUrl: www.google.com
 cert-manager:
   installCRDs: true
 serviceAccount: 
