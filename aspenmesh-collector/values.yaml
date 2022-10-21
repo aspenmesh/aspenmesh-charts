@@ -127,6 +127,9 @@ aspenmeshCollector:
     prometheusRemoteWriteExporter:
       endpoint: https://metrics.cloud.aspenmesh.io/write
       timeout: 30s
+      externalLabels:
+        cluster: aspenmesh-saas-demo-otel
+        __replica__: otel-replica
       headers:
         Authorization: "Basic cHJvbXNjYWxlOlFuVXlOMVZaV2paVGNWSldMMmhrZUc1aU1qRjJjbFIyY0dZeldUWXJNRWd5WXpOVGRUQXZiMUZGU1QwSw=="
         X-AM-API-KEY: #whatever
