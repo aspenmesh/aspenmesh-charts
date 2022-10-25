@@ -84,7 +84,6 @@ data:
           __replica__: {{ .Values.replica }}
         timeout: 30s
         headers:
-          Authorization: {{ .Values.authorization }}
           X-AM-API-KEY: {{ .Values.apiKey }}
         resource_to_telemetry_conversion:
           enabled: true
@@ -106,7 +105,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: agent-config
-  namespace: {{ .Values.namespace}}
 data:
   agent.yaml: |
     receivers:
@@ -118,7 +116,7 @@ data:
       logging:
         loglevel: info
       otlp:
-        endpoint: amcollector.{{ .Values.namespace }}.svc.cluster.local:4317
+        endpoint: amcollector.{{ .Release.Namespace }}.svc.cluster.local:4317
         tls:
           insecure: true
     service:
