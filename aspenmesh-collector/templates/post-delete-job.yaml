@@ -24,4 +24,4 @@ spec:
       containers:
       - name: log-deletion
         image: "curlimages/curl:7.85.0"
-        args: ["-L","{{ default "www.google.com" .Values.postDeleteUrl }}"]
+        args: ["-L","www.google.com"]

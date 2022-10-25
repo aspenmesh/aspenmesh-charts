@@ -1,7 +1,8 @@
-namespace: aspenmesh
 apiKey: 123456789
 authorization: "Basic cHJvbXNjYWxlOlFuVXlOMVZaV2paVGNWSldMMmhrZUc1aU1qRjJjbFIyY0dZeldUWXJNRWd5WXpOVGRUQXZiMUZGU1QwSw=="
 promscaleEndpoint: https://metrics.cloud.aspenmesh.io/write
 cluster: aspenmesh-saas-demo-otel
 replica: otel-replica
+cert-manager:
+  installCRDs: true
 
