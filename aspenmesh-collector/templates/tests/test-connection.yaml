@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "aspenmeshCollector.fullname" . }}:{{ .Values.aspenmeshCollector.service.port }}']
+      args: ['{{ include "aspenmeshCollector.fullname" . }}:4317']
   restartPolicy: Never

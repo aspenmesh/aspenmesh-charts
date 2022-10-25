@@ -1,27 +1,14 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "aspenmeshCollector.name" -}}
-{{- default .Chart.Name .Values.aspenmeshCollector.nameOverride | trunc 63 | trimSuffix "-" }}
-{{- end }}
+{{- define "aspenmeshCollector.name" -}}aspenmesh-collector{{- end}}
 
 {{/*
 Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "aspenmeshCollector.fullname" -}}
-{{- if .Values.aspenmeshCollector.fullnameOverride }}
-{{- .Values.aspenmeshCollector.fullnameOverride | trunc 63 | trimSuffix "-" }}
-{{- else }}
-{{- $name := default .Chart.Name .Values.aspenmeshCollector.nameOverride }}
-{{- if contains $name .Release.Name }}
-{{- .Release.Name | trunc 63 | trimSuffix "-" }}
-{{- else }}
-{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
-{{- end }}
-{{- end }}
-{{- end }}
+{{- define "aspenmeshCollector.fullname" -}}aspenmesh-collector{{- end}}
 
 {{/*
 Create chart name and version as used by the chart label.
@@ -53,27 +40,14 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "aspenmeshAgent.name" -}}
-{{- default .Chart.Name .Values.aspenmeshAgent.nameOverride | trunc 63 | trimSuffix "-" }}
-{{- end }}
+{{- define "aspenmeshAgent.name" -}}aspenmesh-agent{{- end}}
 
 {{/*
 Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "aspenmeshAgent.fullname" -}}
-{{- if .Values.aspenmeshAgent.fullnameOverride }}
-{{- .Values.aspenmeshAgent.fullnameOverride | trunc 63 | trimSuffix "-" }}
-{{- else }}
-{{- $name := default .Chart.Name .Values.aspenmeshAgent.nameOverride }}
-{{- if contains $name .Release.Name }}
-{{- .Release.Name | trunc 63 | trimSuffix "-" }}
-{{- else }}
-{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
-{{- end }}
-{{- end }}
-{{- end }}
+{{- define "aspenmeshAgent.fullname" -}}aspenmesh-agent{{- end}}
 
 {{/*
 Common labels
@@ -95,13 +69,3 @@ app.kubernetes.io/name: {{ include "aspenmeshAgent.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "am.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "aspenmeshCollector.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
-{{- end }}

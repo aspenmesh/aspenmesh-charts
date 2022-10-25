@@ -5,12 +5,12 @@ metadata:
   labels:
     {{- include "aspenmeshCollector.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.aspenmeshCollector.service.type }}
+  type: ClusterIP
   ports:
-    - port: {{ .Values.aspenmeshCollector.service.port }}
-      targetPort: {{ .Values.aspenmeshCollector.service.targetPort }}
-      protocol: {{ .Values.aspenmeshCollector.service.protocol}}
-      name: {{ .Values.aspenmeshCollector.service.name }}
+    - port: 4317
+      targetPort: 4317
+      protocol: TCP
+      name: grpc-otlp
   selector:
     {{- include "aspenmeshCollector.selectorLabels" . | nindent 4 }}
 ---
@@ -22,11 +22,11 @@ metadata:
   labels:
     {{- include "aspenmeshAgent.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.aspenmeshAgent.service.type }}
+  type: ClusterIP
   ports:
-    - port: {{ .Values.aspenmeshAgent.service.port }}
-      targetPort: {{ .Values.aspenmeshAgent.service.targetPort }}
-      protocol: {{ .Values.aspenmeshAgent.service.protocol}}
-      name: {{ .Values.aspenmeshAgent.service.name }}
+    - port: 4317
+      targetPort: 4317
+      protocol: TCP
+      name: grpc-otlp
   selector:
     {{- include "aspenmeshAgent.selectorLabels" . | nindent 4 }}

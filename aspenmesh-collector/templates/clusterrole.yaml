@@ -3,21 +3,31 @@ kind: ClusterRole
 metadata:
   labels:
     app: {{ include "aspenmeshCollector.fullname" . }}
-  name: {{ .Values.clusterRole.name }}
+  name: am-collector-role
 rules:
 - apiGroups:
   - ""
   resources:
-  {{- toYaml .Values.clusterRole.rules.all.resources | nindent 2 }}
+    - nodes
+    - nodes/metrics
+    - services
+    - endpoints
+    - pods
+    - configmaps
   verbs:
-  {{- toYaml .Values.clusterRole.rules.all.verbs | nindent 2 }}
+      - get
+      - list
+      - watch
 - apiGroups:
   - networking.k8s.io
   resources:
-  {{- toYaml .Values.clusterRole.rules.networking.resources | nindent 2 }}
+    - ingresses
   verbs:
-  {{- toYaml .Values.clusterRole.rules.networking.verbs | nindent 2 }}
+    - get
+    - list
+    - watch
 - nonResourceURLs:
-  {{- toYaml .Values.clusterRole.rules.nonResourceURLs | nindent 2 }}
+  - /metrics
+  - /metrics/cadvisor
   verbs:
-  {{- toYaml .Values.clusterRole.rules.nonResourceURLVerbs | nindent 2}}
+    - get

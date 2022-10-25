@@ -5,27 +5,31 @@ metadata:
   labels:
     {{- include "aspenmeshCollector.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.aspenmeshCollector.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
       {{- include "aspenmeshCollector.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       labels:
         {{- include "aspenmeshCollector.selectorLabels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "am.serviceAccountName" . }}
+      serviceAccountName: am-collector-sa
       containers:
-        - name: {{ default .Chart.Name .Values.aspenmeshCollector.container.name }}
-          image: "{{ .Values.aspenmeshCollector.image.repository }}:{{ .Values.aspenmeshCollector.image.tag | default .Chart.AppVersion }}"
+        - name: am-collector
+          image: "ghcr.io/aspenmesh/aspenmesh-collector:0.1.1"
+          ports:
+          - containerPort: 4317
           args:
-            {{- toYaml .Values.aspenmeshCollector.container.args  | nindent 12 }}
+          - --config=/conf/collector.yaml
           volumeMounts:
-            {{- toYaml .Values.aspenmeshCollector.container.volumeMounts  | nindent 12 }}
+          - mountPath: /conf
+            name: collector-config
       volumes:
-        {{- toYaml .Values.aspenmeshCollector.volumes  | nindent 8 }}
+      - name: collector-config
+        configMap:
+          name: collector-config
+          items:
+          - key: collector.yaml
+            path: collector.yaml
 

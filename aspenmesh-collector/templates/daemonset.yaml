@@ -11,22 +11,25 @@ spec:
       {{- include "aspenmeshAgent.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       labels:
         {{- include "aspenmeshAgent.selectorLabels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "am.serviceAccountName" . }}
+      serviceAccountName: am-collector-sa
       containers:
-        - name: {{ default .Chart.Name .Values.aspenmeshAgent.container.name }}
-          image: "{{ .Values.aspenmeshAgent.image.repository }}:{{ .Values.aspenmeshAgent.image.tag | default .Chart.AppVersion }}"
+        - name: am-agent
+          image: "ghcr.io/aspenmesh/aspenmesh-collector:0.1.1"
           args:
-            {{- toYaml .Values.aspenmeshAgent.container.args  | nindent 12 }}
+            - "--config=/conf/agent.yaml"
           volumeMounts:
-            {{- toYaml .Values.aspenmeshAgent.container.volumeMounts  | nindent 12 }}
+            - name: agent-config
+              mountPath: /conf
           ports:
-            {{- toYaml .Values.aspenmeshAgent.container.ports  | nindent 12 }}
+          - containerPort: 4317
+          - containerPort: 8888
       volumes:
-        {{- toYaml .Values.aspenmeshAgent.volumes  | nindent 8 }}
+        - name: agent-config
+          configMap:
+            name: agent-config
+            items:
+              - key: agent.yaml
+                path: agent.yaml
