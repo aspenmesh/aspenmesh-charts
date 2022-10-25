@@ -116,7 +116,7 @@ data:
       logging:
         loglevel: info
       otlp:
-        endpoint: amcollector.{{ .Release.Namespace }}.svc.cluster.local:4317
+        endpoint: aspenmesh-collector.{{ .Release.Namespace }}.svc.cluster.local:4317
         tls:
           insecure: true
     service:
