@@ -1,7 +1,0 @@
-apiKey: 123456789
-promscaleEndpoint: https://metrics.cloud.aspenmesh.io/write
-cluster: aspenmesh-saas-demo-otel
-replica: otel-replica
-cert-manager:
-  installCRDs: true
-
