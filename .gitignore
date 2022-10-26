@@ -2,8 +2,6 @@
 pid.file
 nohup.out
 *.lock
-
-### VS Code ###
 .vscode/
-
+.cr-release-packages
 

@@ -3,32 +3,32 @@ name: aspenmesh-demo
 description: Aspen Mesh Demo Site
 icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
 type: application
-version: 0.1.1
+version: 0.1.0
 appVersion: "0.1.0"
 dependencies:
   - name: adservice
-    condition: adservice.enabled
+    version: 0.1.0
   - name: boutiquedb
-    condition: boutiquedb.enabled
+    version: 0.1.0
   - name: cartservice
-    condition: cartservice.enabled
+    version: 0.1.0
   - name: checkoutservice
-    condition: checkoutservice.enabled
+    version: 0.1.0
   - name: currencyservice
-    condition: currencyservice.enabled
+    version: 0.1.0
   - name: emailservice
-    condition: emailservice.enabled
+    version: 0.1.0
   - name: frontend
-    condition: frontend.enabled
+    version: 0.1.0
   - name: paymentservice
-    condition: paymentservice.enabled
+    version: 0.1.0
   - name: productcatalogservice
-    condition: productcatalogservice.enabled
+    version: 0.1.0
   - name: recommendationservice
-    condition: recommendationservice.enabled
+    version: 0.1.0
   - name: redis
-    condition: redis.enabled
+    version: 0.1.0
   - name: shippingservice
-    condition: shippingservice.enabled
+    version: 0.1.0
   - name: loadgenerator
-    condition: loadgenerator.enabled
+    version: 0.1.0
