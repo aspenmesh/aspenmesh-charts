@@ -6,6 +6,4 @@ nohup.out
 ### VS Code ###
 .vscode/
 
-### Helm dependencies ###
-charts/
 
