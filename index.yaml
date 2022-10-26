@@ -1,0 +1,72 @@
+apiVersion: v1
+entries:
+  aspenmesh-collector:
+  - apiVersion: v2
+    created: "2022-10-26T20:49:19.580185595Z"
+    dependencies:
+    - name: cert-manager
+      repository: https://charts.jetstack.io
+      version: 1.8.2
+    - name: kube-state-metrics
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 4.20.0
+    description: Aspen Mesh Collector
+    digest: 58a2613208988f6ca32a4edb8603ae3d37e69afb7699e7c6681dbec57fc70dea
+    icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
+    name: aspenmesh-collector
+    type: application
+    urls:
+    - https://github.com/aspenmesh/aspenmesh-charts/releases/download/aspenmesh-collector-0.1.0/aspenmesh-collector-0.1.0.tgz
+    version: 0.1.0
+  aspenmesh-demo:
+  - apiVersion: v2
+    created: "2022-10-26T20:49:19.828525235Z"
+    dependencies:
+    - name: adservice
+      repository: ""
+      version: 0.1.0
+    - name: boutiquedb
+      repository: ""
+      version: 0.1.0
+    - name: cartservice
+      repository: ""
+      version: 0.1.0
+    - name: checkoutservice
+      repository: ""
+      version: 0.1.0
+    - name: currencyservice
+      repository: ""
+      version: 0.1.0
+    - name: emailservice
+      repository: ""
+      version: 0.1.0
+    - name: frontend
+      repository: ""
+      version: 0.1.0
+    - name: paymentservice
+      repository: ""
+      version: 0.1.0
+    - name: productcatalogservice
+      repository: ""
+      version: 0.1.0
+    - name: recommendationservice
+      repository: ""
+      version: 0.1.0
+    - name: redis
+      repository: ""
+      version: 0.1.0
+    - name: shippingservice
+      repository: ""
+      version: 0.1.0
+    - name: loadgenerator
+      repository: ""
+      version: 0.1.0
+    description: Aspen Mesh Demo Site
+    digest: 044f592f980f7bd08a24eb1f8df83cd16d43748453565057b10bbae8da521da8
+    icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
+    name: aspenmesh-demo
+    type: application
+    urls:
+    - https://github.com/aspenmesh/aspenmesh-charts/releases/download/aspenmesh-demo-0.1.0/aspenmesh-demo-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-10-26T20:49:19.828531235Z"
