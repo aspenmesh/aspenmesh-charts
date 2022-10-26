@@ -38,5 +38,5 @@ jobs:
 workflows:
   helm-chart-release:
     jobs:
-      - release
+      #- release
       
