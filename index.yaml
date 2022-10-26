@@ -21,6 +21,56 @@ entries:
     version: 0.1.0
   aspenmesh-demo:
   - apiVersion: v2
+    created: "2022-10-26T20:42:40.354370825Z"
+    dependencies:
+    - name: adservice
+      repository: ""
+      version: 0.1.0
+    - name: boutiquedb
+      repository: ""
+      version: 0.1.0
+    - name: cartservice
+      repository: ""
+      version: 0.1.0
+    - name: checkoutservice
+      repository: ""
+      version: 0.1.0
+    - name: currencyservice
+      repository: ""
+      version: 0.1.0
+    - name: emailservice
+      repository: ""
+      version: 0.1.0
+    - name: frontend
+      repository: ""
+      version: 0.1.0
+    - name: paymentservice
+      repository: ""
+      version: 0.1.0
+    - name: productcatalogservice
+      repository: ""
+      version: 0.1.0
+    - name: recommendationservice
+      repository: ""
+      version: 0.1.0
+    - name: redis
+      repository: ""
+      version: 0.1.0
+    - name: shippingservice
+      repository: ""
+      version: 0.1.0
+    - name: loadgenerator
+      repository: ""
+      version: 0.1.0
+    description: Aspen Mesh Demo Site
+    digest: 51782f7109762ae3f001a4d52248c790711bce4632bd02455ad8afa9f03ac731
+    icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
+    name: aspenmesh-demo
+    type: application
+    urls:
+    - https://github.com/aspenmesh/aspenmesh-charts/releases/download/aspenmesh-demo-0.1.1/aspenmesh-demo-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     appVersion: 0.1.0
     created: "2022-10-26T19:38:58.234155402Z"
     dependencies:
@@ -71,4 +121,4 @@ entries:
     urls:
     - https://aspenmesh.github.io/aspenmesh-charts/aspenmesh-demo-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-26T19:38:58.223998994Z"
+generated: "2022-10-26T20:42:40.354377625Z"
