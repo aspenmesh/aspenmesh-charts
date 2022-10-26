@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "aspenmeshCollector.fullname" . }}
+  labels:
+    {{- include "aspenmeshCollector.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "aspenmeshCollector.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "aspenmeshCollector.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: am-collector-sa
+      containers:
+        - name: am-collector
+          image: "ghcr.io/aspenmesh/aspenmesh-collector:0.1.1"
+          ports:
+          - containerPort: 4317
+          args:
+          - --config=/conf/collector.yaml
+          volumeMounts:
+          - mountPath: /conf
+            name: collector-config
+      volumes:
+      - name: collector-config
+        configMap:
+          name: collector-config
+          items:
+          - key: collector.yaml
+            path: collector.yaml
+

@@ -1,0 +1,7 @@
+apiKey:
+promscaleEndpoint: https://metrics.cloud.aspenmesh.io/write
+cluster:
+replica:
+cert-manager:
+  installCRDs: true
+
