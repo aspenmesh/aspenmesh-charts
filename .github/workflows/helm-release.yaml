@@ -30,6 +30,7 @@ jobs:
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.4.1
-        charts_dir: aspenmesh-collector/charts
+        with:
+          charts_dir: aspenmesh-collector/charts
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
