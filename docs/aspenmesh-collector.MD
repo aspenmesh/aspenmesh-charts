@@ -16,22 +16,14 @@ kubectl create namespace aspenmesh
 
 ### Step 3
 
-Create a Helm values override file.  Here is what an example file would look like:
+Create a Helm values override file. At a minimum, you need to set values for `apiKey`, `cluster`, and `replica`. Here is what an example file would look like:
 
 ```yaml
 
-aspenmeshCollector:
-  collectorConfig:
-    enablePrometheusRemoteWriteExporter: true
-    prometheusRemoteWriteExporter:
-      endpoint: https://metrics.cloud.aspenmesh.io/write
-      externalLabels:
-        cluster: aspenmesh-saas-demo-otel
-        __replica__: otel-replica
-      timeout: 30s
-      headers:
-        TENANT: TEST_TENANT
-        
+apiKey: 123456789abcdef
+cluster: my-cluster
+replica: my-replica
+    
 ```
 
 ### Step 4
