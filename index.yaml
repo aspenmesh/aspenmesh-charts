@@ -2,6 +2,24 @@ apiVersion: v1
 entries:
   aspenmesh-collector:
   - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2022-10-28T16:43:59.07387266Z"
+    dependencies:
+    - name: cert-manager
+      repository: https://charts.jetstack.io
+      version: 1.8.2
+    - name: kube-state-metrics
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 4.20.0
+    description: Aspen Mesh Collector
+    digest: 3782fc56c26d34c109a54f28dcf26b419ae440957ac15c4251c27958a4014a33
+    icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
+    name: aspenmesh-collector
+    type: application
+    urls:
+    - https://github.com/aspenmesh/aspenmesh-charts/releases/download/aspenmesh-collector-0.1.1/aspenmesh-collector-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     created: "2022-10-26T20:49:19.580185595Z"
     dependencies:
     - name: cert-manager
@@ -69,4 +87,4 @@ entries:
     urls:
     - https://github.com/aspenmesh/aspenmesh-charts/releases/download/aspenmesh-demo-0.1.0/aspenmesh-demo-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-26T20:49:19.828531235Z"
+generated: "2022-10-28T16:43:59.07388746Z"
