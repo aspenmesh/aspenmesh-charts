@@ -78,13 +78,10 @@ data:
       logging:
         loglevel: info
       prometheusremotewrite:
-        endpoint: {{ .Values.promscaleEndpoint }}
-        external_labels:
-          cluster: {{ required "A cluster name is required." .Values.cluster }}
-          __replica__: {{ required "A replica name is required." .Values.replica }}
+        endpoint: {{ .Values.endpoint | default "https://metrics.cloud.aspenmesh.io/write" | quote }}
         timeout: 30s
         headers:
-          X-AM-API-KEY: {{ required "An API key is required." .Values.apiKey }}
+          X-AM-API-KEY: {{ required "An API key is required." .Values.apiKey | quote }}
         resource_to_telemetry_conversion:
           enabled: true
     service:
