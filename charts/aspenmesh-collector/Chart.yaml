@@ -7,7 +7,6 @@ description: Aspen Mesh Collector
 icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png
 dependencies:
   - name: cert-manager
-    #condition: cert-manager.enabled
     version: 1.8.2
     repository: "https://charts.jetstack.io"
   - name: kube-state-metrics
