@@ -62,6 +62,22 @@ data:
                 action: keep
                 regex: istiod;http-monitoring
     processors:
+      metricstransform:
+        transforms:
+          # for all kube-state-metrics metrics, rename the label app to app.kubernetes.io/name
+          - include: ^kube_.
+            action: update
+            operations:
+              - action: update_label
+                label: app
+                new_label: app.kubernetes.io/name
+          # for all kube-state-metrics metrics, rename the label version to app.kubernetes.io/version
+          - include: ^kube_.
+            action: update
+            operations:
+              - action: update_label
+                label: version
+                new_label: app.kubernetes.io/version
       resourcedetection/eks:
         detectors: [env, eks]
         timeout: 2s
@@ -91,6 +107,7 @@ data:
             - otlp
             - prometheus
           processors:
+            - metricstransform
             - resourcedetection/eks
             - resourcedetection/aks
             - resourcedetection/gke
