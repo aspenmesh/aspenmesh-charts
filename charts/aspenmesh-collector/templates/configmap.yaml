@@ -64,17 +64,14 @@ data:
     processors:
       metricstransform:
         transforms:
-          # for all kube-state-metrics metrics, rename the label app to app.kubernetes.io/name
-          - include: ^kube_.
+          # for all kube-state-metrics metrics, rename the labels app and version to app.kubernetes.io/name and app.kubernetes.io/version
+          - include: ^kube_.*$
+            match_type: regexp
             action: update
-            operations:
+            operations:   
               - action: update_label
                 label: label_app
                 new_label: label_app_kubernetes_io_name
-          # for all kube-state-metrics metrics, rename the label version to app.kubernetes.io/version
-          - include: ^kube_.
-            action: update
-            operations:
               - action: update_label
                 label: label_version
                 new_label: label_app_kubernetes_io_version
