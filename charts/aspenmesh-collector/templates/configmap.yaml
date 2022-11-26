@@ -8,37 +8,10 @@ data:
     receivers:
       otlp:
         protocols:
-          grpc:
-      prometheus_simple:
-        endpoint: prometheus.istio-system:9090
-        collection_interval: 10s
-        metrics_path: /federate
-        params:
-            match[]:
-            - 'istio_requests_total'
-            - 'istio_request_duration_milliseconds_bucket'
-            - 'istio_request_bytes_count'
-            - 'istio_request_bytes_sum'
-            - 'istio_response_bytes_count'
-            - 'istio_response_bytes_sum'
-            - 'istio_request_messages_total'
-            - 'istio_response_messages_total'
-            - 'istio_tcp_sent_bytes_total'
-            - 'istio_tcp_received_bytes_total'
-            - 'istio_tcp_connections_opened_total'
-            - 'istio_tcp_connections_closed_total'
-            - 'container_cpu_usage_seconds_total'
-            - 'container_memory_working_set_bytes'
-            - 'kube_deployment_spec_replicas'
-            - 'kube_deployment_status_replicas'
-            - 'kube_deployment_status_replicas_available' 
+          grpc: 
       prometheus:
         config:
           scrape_configs:
-            - job_name: prometheus
-              static_configs:
-              - targets:
-                - prometheus.istio-system:9090
             - job_name: kube-state-metrics
               static_configs:
               - targets:
@@ -51,16 +24,6 @@ data:
               - source_labels: [__meta_kubernetes_pod_container_port_name]
                 action: keep
                 regex: '.*-envoy-prom'
-            - job_name: 'istiod'
-              kubernetes_sd_configs:
-              - role: endpoints
-                namespaces:
-                  names:
-                  - istio-system
-              relabel_configs:
-              - source_labels: [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
-                action: keep
-                regex: istiod;http-monitoring
     processors:
       resourcedetection/eks:
         detectors: [env, eks]
