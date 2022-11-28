@@ -108,18 +108,7 @@ data:
           insecure: true
     service:
       pipelines:
-        traces:
-          receivers:
-            - otlp
-            - kubeletstats
-          processors: []
-          exporters:
-            - logging
-            - otlp
         metrics:
-          receivers:
-            - otlp
+          receivers: [oltp, kubeletstats]
           processors: []
-          exporters:
-            - logging
-            - otlp
+          exporters: [logging, otlp]
