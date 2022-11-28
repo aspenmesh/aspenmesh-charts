@@ -109,17 +109,10 @@ data:
     service:
       pipelines:
         traces:
-          receivers:
-            - otlp
-            - kubeletstats
+          receivers: [otlp]
           processors: []
-          exporters:
-            - logging
-            - otlp
+          exporters: [logging, otlp]
         metrics:
-          receivers:
-            - otlp
+          receivers: [otlp, kubeletstats]
           processors: []
-          exporters:
-            - logging
-            - otlp
+          exporters: 
