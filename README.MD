@@ -46,14 +46,14 @@ helm search repo aspenmesh
 ```bash
 NAME                    	      CHART VERSION	APP VERSION	DESCRIPTION         
 aspenmesh/aspenmesh-demo	      0.1.0        	0.1.0      	Aspen Mesh Demo Site
-aspenmesh/aspenmesh-collector    0.1.0        	0.1.0       Aspen Mesh Collector
+aspenmesh/aspenmesh-collector   0.1.6        	0.1.0       Aspen OpenTelemetry Collector
 
 ```
 
 ### Next
 
 See the README for each application for configuration and next steps
- * [Aspen Mesh Collector](./docs/aspenmesh-collector.MD)
+ * [Aspen OpenTelemetry Collector](./docs/aspenmesh-collector.MD)
  * [Aspen Mesh Demo Site](./docs/aspenmesh-demo.MD)
 
 
