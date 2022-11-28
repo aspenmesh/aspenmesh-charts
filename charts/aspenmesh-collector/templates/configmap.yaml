@@ -90,6 +90,14 @@ data:
       otlp:
         protocols:
           grpc:
+    kubeletstats:
+      collection_interval: 60s
+      auth_type: "serviceAccount"
+      endpoint: "${K8S_NODE_NAME}:10250"
+      insecure_skip_verify: true
+      metric_groups:
+      - containers
+      - pod
     processors:
     exporters:
       logging:
@@ -103,6 +111,7 @@ data:
         traces:
           receivers:
             - otlp
+            - kubeletstats
           processors: []
           exporters:
             - logging
