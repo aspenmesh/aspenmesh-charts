@@ -12,7 +12,7 @@ Add this repository to your Helm client
 helm repo add aspenmesh https://aspenmesh.github.io/aspenmesh-charts/
 ```
 
-```bash
+```console
 "aspenmesh" has been added to your repositories
 ```
 
@@ -24,7 +24,7 @@ Update your Helm client
 helm repo update
 ```
 
-```bash
+```console
 Hang tight while we grab the latest from your chart repositories...
 ...Successfully got an update from the "aspenmesh" chart repository
 ```
@@ -45,7 +45,7 @@ With you API key, execute the following command:
 helm upgrade --install aspenmesh-collector aspenmesh/aspenmesh-collector -n aspenmesh --create-namespace --set apiKey=<replace-with-your-api-key>
 ```
 
-```bash
+```console
 NAME: aspenmesh-collector
 LAST DEPLOYED: Wed Nov 2 15:48:57 2022
 NAMESPACE: aspenmesh
