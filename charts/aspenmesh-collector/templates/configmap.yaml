@@ -8,37 +8,10 @@ data:
     receivers:
       otlp:
         protocols:
-          grpc:
-      prometheus_simple:
-        endpoint: prometheus.istio-system:9090
-        collection_interval: 10s
-        metrics_path: /federate
-        params:
-            match[]:
-            - 'istio_requests_total'
-            - 'istio_request_duration_milliseconds_bucket'
-            - 'istio_request_bytes_count'
-            - 'istio_request_bytes_sum'
-            - 'istio_response_bytes_count'
-            - 'istio_response_bytes_sum'
-            - 'istio_request_messages_total'
-            - 'istio_response_messages_total'
-            - 'istio_tcp_sent_bytes_total'
-            - 'istio_tcp_received_bytes_total'
-            - 'istio_tcp_connections_opened_total'
-            - 'istio_tcp_connections_closed_total'
-            - 'container_cpu_usage_seconds_total'
-            - 'container_memory_working_set_bytes'
-            - 'kube_deployment_spec_replicas'
-            - 'kube_deployment_status_replicas'
-            - 'kube_deployment_status_replicas_available' 
+          grpc: 
       prometheus:
         config:
           scrape_configs:
-            - job_name: prometheus
-              static_configs:
-              - targets:
-                - prometheus.istio-system:9090
             - job_name: kube-state-metrics
               static_configs:
               - targets:
@@ -51,21 +24,11 @@ data:
               - source_labels: [__meta_kubernetes_pod_container_port_name]
                 action: keep
                 regex: '.*-envoy-prom'
-            - job_name: 'istiod'
-              kubernetes_sd_configs:
-              - role: endpoints
-                namespaces:
-                  names:
-                  - istio-system
-              relabel_configs:
-              - source_labels: [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
-                action: keep
-                regex: istiod;http-monitoring
     processors:
       metricstransform:
         transforms:
-          # for all kube-state-metrics metrics, rename the labels app and version to app.kubernetes.io/name and app.kubernetes.io/version
-          - include: ^kube_.*$
+          # for all kube_*_labels metrics, rename the labels app and version to app.kubernetes.io/name and app.kubernetes.io/version
+          - include: ^kube_.*_labels$
             match_type: regexp
             action: update
             operations:   
@@ -75,6 +38,24 @@ data:
               - action: update_label
                 label: label_version
                 new_label: label_app_kubernetes_io_version
+      k8sattributes:
+        auth_type: "serviceAccount"
+        passthrough: false
+        extract:
+          metadata:
+            - k8s.pod.name
+            - k8s.pod.uid
+            - k8s.deployment.name
+            - k8s.namespace.name
+            - k8s.node.name
+            - k8s.pod.start_time
+        pod_association:
+        - sources:
+          - from: resource_attribute
+            name: k8s.pod.ip
+        - sources:
+          - from: resource_attribute
+            name: k8s.pod.uid
       resourcedetection/eks:
         detectors: [env, eks]
         timeout: 2s
@@ -105,6 +86,7 @@ data:
             - prometheus
           processors:
             - metricstransform
+            - k8sattributes
             - resourcedetection/eks
             - resourcedetection/aks
             - resourcedetection/gke
@@ -122,6 +104,14 @@ data:
       otlp:
         protocols:
           grpc:
+      kubeletstats:
+        collection_interval: 60s
+        auth_type: "serviceAccount"
+        endpoint: "${K8S_NODE_NAME}:10250"
+        insecure_skip_verify: true
+        metric_groups:
+        - container
+        - pod
     processors:
     exporters:
       logging:
@@ -133,16 +123,10 @@ data:
     service:
       pipelines:
         traces:
-          receivers:
-            - otlp
+          receivers: [otlp]
           processors: []
-          exporters:
-            - logging
-            - otlp
+          exporters: [logging, otlp]
         metrics:
-          receivers:
-            - otlp
+          receivers: [otlp, kubeletstats]
           processors: []
-          exporters:
-            - logging
-            - otlp
+          exporters: [logging, otlp]
