@@ -15,7 +15,7 @@ kubectl logs -n aspenmesh ${AOC_POD}
 
 ### Exporting data not working
 
-If you are unable to export to the Aspen Apple Intelligence Platform then this is likely because either:
+If you are unable to export to the Aspen App Intelligence Platform then this is likely because either:
 
 - There is a network configuration issue
 - The `apiKey` specified during deployment is incorrect
