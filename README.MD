@@ -1,10 +1,16 @@
 # Aspen Mesh Helm Charts
 
-These are the official Helm charts for Aspen Mesh.
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![Release Charts](https://github.com/aspenmesh/aspenmesh-charts/workflows/Release%20Charts/badge.svg?branch=main)
+
+These are the official Helm charts for [Aspen Mesh](https://aspenmesh.io/). [Helm](https://helm.sh/) is a package manager for Kubernetes.
+
+**Available Packages**:
+- [Aspen OpenTelemetry Collector](./charts/aspen-collector)
+- [Aspen Mesh Microservices Demo](./charts/aspenmesh-demo)
 
 ## Prerequisites
 
-The following are required before install Aspen Mesh applications:
+The following are required before installing any Aspen Mesh chart:
 
  * Access to an existing [Kubernetes](https://kubernetes.io/docs/home/#set-up-a-k8s-cluster) cluster
  * [Istio 1.13 or higher](https://istio.io/latest/docs/setup/install/) installed in the cluster.
@@ -13,50 +19,25 @@ The following are required before install Aspen Mesh applications:
 
 ## Adding the Aspen Mesh Helm Repository
 
-### Step 1
-
-Add this repository to your Helm client
-   
 ```bash
 helm repo add aspenmesh https://aspenmesh.github.io/aspenmesh-charts/
-```
-```bash
-"aspenmesh" has been added to your repositories
-```
-
-### Step 2
-
-Update your Helm client
-
-```bash
 helm repo update
 ```
-```bash
-Hang tight while we grab the latest from your chart repositories...
-...Successfully got an update from the "aspenmesh" chart repository
-```
 
-### Step 3
+## Next Steps
 
-Search for the Aspen Mesh chart
-
-```bash
-helm search repo aspenmesh
-```
-```bash
-NAME                    	      CHART VERSION	APP VERSION	DESCRIPTION         
-aspenmesh/aspenmesh-demo	      0.1.0        	0.1.0      	Aspen Mesh Demo Site
-aspenmesh/aspenmesh-collector   0.1.7        	0.1.0       Aspen OpenTelemetry Collector
-
-```
-
-### Next
-
-See the README for each application for configuration and next steps
- * [Aspen OpenTelemetry Collector](./docs/aspenmesh-collector.MD)
- * [Aspen Mesh Demo Site](./docs/aspenmesh-demo.MD)
+See the README for each chart for configuration and next steps
+ * [Aspen OpenTelemetry Collector](./docs/aspenmesh-collector.md)
+ * [Aspen Mesh Microservices Demo](./docs/aspenmesh-demo.md)
 
 
+## License
 
+<!-- Keep full URL links to repo files because this README syncs from main to gh-pages.  -->
+[Apache 2.0 License](https://github.com/aspenmesh/aspenmesh-charts/blob/main/LICENSE).
+
+## Helm Charts Build Status
+
+![Release Charts](https://github.com/aspenmesh/aspenmesh-charts/workflows/Release%20Charts/badge.svg?branch=main)
 
 
