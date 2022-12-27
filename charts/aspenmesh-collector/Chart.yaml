@@ -1,7 +1,7 @@
 apiVersion: v2
 name: aspenmesh-collector
 type: application
-version: 0.1.8
+version: 0.1.9
 appVersion: 0.1.0
 description: Aspen OpenTelemetry Collector
 icon: https://aspenmesh.github.io/aspenmesh-charts/docs/images/aspenmesh.png

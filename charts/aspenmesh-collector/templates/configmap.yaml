@@ -36,6 +36,9 @@ data:
             - k8s.namespace.name
             - k8s.node.name
             - k8s.pod.start_time
+          labels:
+            - tag_name: label_$$1
+              key_regex: (app.kubernetes.io/.*)
         pod_association:
         - sources:
           - from: resource_attribute
