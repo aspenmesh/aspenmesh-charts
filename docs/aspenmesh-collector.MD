@@ -4,6 +4,14 @@ The Aspen OpenTelemetry Collector collects telemetry data from Kubernetes and yo
 
 ## Installation
 
+### One-line script installation
+
+The Aspen OpenTelemetry Collector can be installed by a one-line script.
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/aspenmesh/aspenmesh-charts/main/scripts/aspenmesh-collector-setup.sh)" -- --endpoint <remote-write-endpoint> --apiKey <user-group-api-key>
+```
+You can also follow the details for each installation step.
+
 ### Add the Aspen Mesh Helm Repository
 
 ```bash
